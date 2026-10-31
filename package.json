@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  },
+  "scripts": {
+    "dev": "tsx src/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
