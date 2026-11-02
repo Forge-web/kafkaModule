@@ -2,6 +2,7 @@
 import express from 'express';
 import { sendMessage } from './producer.js';
 import { TOPICS } from './config.js';
+import { ALL } from 'node:dns';
 
 const app = express();
 const PORT = 3001;
@@ -30,6 +31,21 @@ app.post('/receiptsTest', async (req, res) => {
     console.error('❌ Ошибка отправки в Kafka:', error);
     return res.status(500).json({ error: error.message });
   }
+});
+
+// 🟢 GET-ручка для вывода всех чеков (заглушка)
+app.get('/receiptsTest', (req, res) => {
+  // Пока возвращаем фейковые данные
+  const mockReceipts = [
+    { id: '1', check_sum: 200, status: 'valid' },
+    { id: '2', check_sum: 500, status: 'invalid' },
+  ];
+  
+  res.json({ 
+    success: true, 
+    count: mockReceipts.length,
+    data: mockReceipts 
+  });
 });
 
 // 🟢 Запуск сервера
