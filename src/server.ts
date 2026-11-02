@@ -10,7 +10,7 @@ const PORT = 3001;
 app.use(express.json());
 
 // 🟢 Ручка для приема чека
-app.post('/receipts', async (req, res) => {
+app.post('/receiptsTest', async (req, res) => {
   const receipt = req.body;
 
   if (!receipt) {
