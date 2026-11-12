@@ -1,30 +1,32 @@
-import { Kafka } from "kafkajs";
+import { Producer } from "kafkajs";
+import { kafka } from "./kafka";
 
-import { KAFKA_BROKERS, CLIENT_ID } from "./config";
+const producer: Producer = kafka.producer();
 
-export async function sendMessage(topic: string, message: any) {
-    // создание клента
-    const kafka= new Kafka({
-        clientId: CLIENT_ID,
-        brokers: KAFKA_BROKERS
-    });
+let isConnected = false;
 
-    // создание продюсера
-    const producer = kafka.producer();
+export async function connectProducer(): Promise<void> {
+	if (!isConnected) {
+		await producer.connect();
+		isConnected = true;
+	}
+}
 
-    try {
-        
-        await producer.connect();
-        
-        await producer.send({
-            topic: topic,
-            messages: [{ value: JSON.stringify(message) }]
-        });
+export async function sendMessage<T>(
+	topic: string,
+	value: T,
+	key?: string | null,
+): Promise<void> {
+	await connectProducer();
+	await producer.send({
+		topic,
+		messages: [{ key: key ?? null, value: JSON.stringify(value) }],
+	});
+}
 
-        console.log(`Отправлено в ${topic}`);
-    } catch (error) {
-        console.error(`Ошибка отправки в ${topic}:`, error);
-    } finally {
-        await producer.disconnect();
-    }
+export async function disconnectProducer(): Promise<void> {
+	if (isConnected) {
+		await producer.disconnect();
+		isConnected = false;
+	}
 }
