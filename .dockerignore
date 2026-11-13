@@ -1,0 +1,7 @@
+node_modules
+Dockerfile
+.dockerignore
+.git
+.env
+npm-debul.log
+.prettierrc.json

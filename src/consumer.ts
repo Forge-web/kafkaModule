@@ -1,9 +1,9 @@
 import { Consumer } from "kafkajs";
-import { kafka } from "./kafka";
-import { validateReceipt } from "./validator";
-import { sendMessage } from "./producer";
-import { DeadLetterMessage } from "./types";
-import { TOPICS } from "./config";
+import { kafka } from "./kafka.js";
+import { validateReceipt } from "./validator.js";
+import { sendMessage } from "./producer.js";
+import { DeadLetterMessage } from "./types.js";
+import { TOPICS } from "./config.js";
 
 const consumer: Consumer = kafka.consumer({
 	groupId: "validator-group",

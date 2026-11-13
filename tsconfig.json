@@ -1,8 +1,11 @@
 {
 	"compilerOptions": {
 		"target": "ES2022",
-		"module": "CommonJS",
-		// "moduleResolution": "node",
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"strict": true,
@@ -12,6 +15,5 @@
 		"types": ["node"]
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules"],
-	"references": [{ "path": "./postgresqlModels" }]
+	"exclude": ["node_modules, dist"]
 }

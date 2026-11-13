@@ -1,8 +1,4 @@
-import { Kafka } from "kafkajs";
-import { KAFKA_BROKERS, CLIENT_ID, TOPICS } from "./config.js";
-import { sendMessage } from "./producer.js";
 import { Decimal } from "decimal.js";
-import { error } from "node:console";
 import { ValidateResult } from "./types.js";
 
 // 1. Функция проверки чека

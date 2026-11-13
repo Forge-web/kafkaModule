@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { sendMessage } from "../producer";
-import { TOPICS } from "../config";
+import { sendMessage } from "../producer.js";
+import { TOPICS } from "../config.js";
 
 const router = Router();
 

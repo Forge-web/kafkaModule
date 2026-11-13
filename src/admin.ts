@@ -1,7 +1,7 @@
 import { Admin } from "kafkajs";
-import { kafka } from "./kafka";
+import { kafka } from "./kafka.js";
 
-import { KAFKA_BROKERS, CLIENT_ID, TOPICS } from "./config";
+import { KAFKA_BROKERS, CLIENT_ID, TOPICS } from "./config.js";
 
 const admin: Admin = kafka.admin();
 

@@ -1,5 +1,5 @@
 import { Producer } from "kafkajs";
-import { kafka } from "./kafka";
+import { kafka } from "./kafka.js";
 
 const producer: Producer = kafka.producer();
 
